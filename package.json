@@ -1,0 +1,31 @@
+{
+  "name": "proshop-v2",
+  "version": "2.0.0",
+  "description": "eCommerce application built with the MERN stack",
+  "homepage": "https://github.com/jstoops/proshop#readme",
+  "bugs": {
+    "url": "https://github.com/jstoops/proshop/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstoops/proshop.git"
+  },
+  "license": "MIT",
+  "author": "John Stoops",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9"
+  }
+}
