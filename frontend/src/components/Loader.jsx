@@ -11,8 +11,8 @@ const Loader = () => {
         margin: 'auto',
         display: 'block',
       }}
-      ></Spinner>
-  )
-}
+    ></Spinner>
+  );
+};
 
-export default Loader
+export default Loader;
