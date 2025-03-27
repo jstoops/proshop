@@ -24,10 +24,10 @@
 ## Workflow
 
 1. Backend
-   a) Add the route with the controller to deal with database, external systems, etc.
+   - Add the route with the controller to deal with database, external systems, etc.
 2. Frontend
-   a) Start with the global state inside the slice and add the actions
-   b) Then add the screen to implement functionality to handle user events
+   - Start with the global state inside the slice and add the actions
+   - Then add the screen to implement functionality to handle user events
 
 Proshop uses the following technologies:
 
