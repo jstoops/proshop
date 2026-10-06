@@ -12,7 +12,6 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "generate-toc": "markdown-toc -i readme.md",
     "test": "node --test backend/tests/*.test.js && npm run test:frontend",
     "test:backend": "node --test backend/tests/*.test.js",
     "test:frontend": "CI=true npm test --prefix frontend -- --watchAll=false"
@@ -20,19 +19,28 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
-    "cookie-parser": "^1.4.6",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.0.1",
-    "multer": "^1.4.5-lts.1"
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.3",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^7.8.12",
+    "multer": "^2.4.0"
   },
   "devDependencies": {
-    "@types/express": "^4.17.17",
+    "@types/express": "^4.17.25",
     "concurrently": "^7.6.0",
-    "markdown-toc": "^1.2.0",
     "mongodb-memory-server": "^11.3.0",
-    "nodemon": "^2.0.21",
+    "nodemon": "^3.1.14",
     "supertest": "^7.3.1"
+  },
+  "overrides": {
+    "nodemon": {
+      "chokidar": "4.0.3"
+    }
+  },
+  "pnpm": {
+    "overrides": {
+      "nodemon>chokidar": "4.0.3"
+    }
   }
 }
