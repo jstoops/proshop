@@ -1,5 +1,4 @@
 import { Pagination } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
   return (
@@ -7,9 +6,8 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = '' }) => {
       <Pagination>
         {[...Array(pages).keys()].map((x) => (
           <Pagination.Item
-            as={Link}
             key={x + 1}
-            to={
+            href={
               !isAdmin
                 ? keyword
                   ? `/search/${keyword}/page/${x + 1}`

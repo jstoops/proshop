@@ -43,8 +43,18 @@ const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state));
     },
     // NOTE: here we need to reset state for when a user logs out so the next
-    // user doesn't inherit the previous users cart and shipping
-    resetCart: (state) => (state = initialState),
+    // user doesn't inherit the previous users cart and shipping.
+    // Returning the module-level initial state is not enough: that object is
+    // captured on page load and can still contain the previous shopper's cart.
+    resetCart: () => {
+      const nextState = {
+        cartItems: [],
+        shippingAddress: {},
+        paymentMethod: 'PayPal',
+      };
+      localStorage.setItem('cart', JSON.stringify(nextState));
+      return nextState;
+    },
   },
 });
 
