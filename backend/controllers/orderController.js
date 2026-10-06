@@ -29,6 +29,12 @@ const addOrderItems = asyncHandler(async (req, res) => {
       const matchingItemFromDB = itemsFromDB.find(
         (itemFromDB) => itemFromDB._id.toString() === itemFromClient._id
       );
+
+      if (!matchingItemFromDB) {
+        res.status(404);
+        throw new Error('Product not found');
+      }
+
       return {
         ...itemFromClient,
         product: itemFromClient._id,
@@ -100,7 +106,10 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
   if (order) {
     // check the correct amount was paid
-    const paidCorrectAmount = order.totalPrice.toString() === value;
+    // PayPal returns a 2-decimal string ("10.00"); Mongoose stores a number
+    // whose default string form ("10") would never match that value.
+    const paidCorrectAmount =
+      Number(order.totalPrice).toFixed(2) === Number(value).toFixed(2);
     if (!paidCorrectAmount) throw new Error('Incorrect amount paid');
 
     order.isPaid = true;
